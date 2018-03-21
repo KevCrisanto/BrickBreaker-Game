@@ -16,5 +16,27 @@ namespace brickbreaker
         {
             InitializeComponent();
         }
+
+        private void MovePaddle(int newXPos)
+        {
+            if (newXPos < 0)
+                newXPos = 0;
+            else if (newXPos > ClientRectangle.Width - imgPaddle.Width)
+                newXPos = ClientRectangle.Width - imgPaddle.Width;
+
+            imgPaddle.Left = newXPos;
+        }
+
+        private void BrickBreakerForm_Load(object sender, EventArgs e)
+        {
+            // Center paddle on screen
+            MovePaddle((ClientRectangle.Width - imgPaddle.Width) / 2);
+
+        }
+
+        private void BrickBreakerForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            MovePaddle(e.X);
+        }
     }
 }
