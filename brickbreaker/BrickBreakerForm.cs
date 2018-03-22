@@ -48,12 +48,34 @@ namespace brickbreaker
         {
             return gamePaused;
         }
+
         private void PauseGame(bool Pause = true)
         {
             ShowMenu(Pause);
             gameTimer.Enabled = !Pause;
             gamePaused = Pause;
             btnResume.Enabled = Pause;
+        }
+
+        private void ShowGameOver(string text = "Game Over")
+        {
+            lblGameOver.Text = text;
+            lblGameOver.Left = (ClientRectangle.Width - lblGameOver.Width) / 2;
+            lblGameOver.Top = 60;
+            lblGameOver.Visible = true;
+            gameTimer.Enabled = false;
+
+            for (int i = 0; i < 10; ++i)
+            {
+                lblGameOver.Top += 15;
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(45);
+            }
+
+            System.Threading.Thread.Sleep(2000);
+            lblGameOver.Visible = false;
+            PauseGame(true);
+            btnResume.Enabled = false;
         }
 
         private int MakeBlocks(int rows, int cols)
@@ -122,8 +144,7 @@ namespace brickbreaker
             if (pt.Y > ClientRectangle.Height)
             {
                 // Game Over
-                lblGameOver.Visible = true;
-                gameTimer.Enabled = false;
+                ShowGameOver();
             }
 
             // Detect collision with paddle
@@ -180,7 +201,7 @@ namespace brickbreaker
                 if(blockCount <= 0)
                 {
                     // Game level is complete
-
+                    ShowGameOver("Level Complete!");
                 }
             }
         }
