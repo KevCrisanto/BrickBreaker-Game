@@ -30,7 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrickBreakerForm));
             this.imgPaddle = new System.Windows.Forms.PictureBox();
+            this.imgBall = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgPaddle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBall)).BeginInit();
             this.SuspendLayout();
             // 
             // imgPaddle
@@ -44,6 +46,18 @@
             this.imgPaddle.TabIndex = 0;
             this.imgPaddle.TabStop = false;
             // 
+            // imgBall
+            // 
+            this.imgBall.BackColor = System.Drawing.Color.Transparent;
+            this.imgBall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.imgBall.Image = ((System.Drawing.Image)(resources.GetObject("imgBall.Image")));
+            this.imgBall.Location = new System.Drawing.Point(514, 263);
+            this.imgBall.Name = "imgBall";
+            this.imgBall.Size = new System.Drawing.Size(32, 32);
+            this.imgBall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgBall.TabIndex = 1;
+            this.imgBall.TabStop = false;
+            // 
             // BrickBreakerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -51,6 +65,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(784, 600);
+            this.Controls.Add(this.imgBall);
             this.Controls.Add(this.imgPaddle);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -61,6 +76,7 @@
             this.Load += new System.EventHandler(this.BrickBreakerForm_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BrickBreakerForm_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.imgPaddle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBall)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -69,6 +85,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox imgPaddle;
+        private System.Windows.Forms.PictureBox imgBall;
     }
 }
 
