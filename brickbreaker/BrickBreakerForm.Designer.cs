@@ -39,6 +39,8 @@
             this.btnQuit = new System.Windows.Forms.Button();
             this.btnResume = new System.Windows.Forms.Button();
             this.btnNewGame = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblScore = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgPaddle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBall)).BeginInit();
             this.GameMenu.SuspendLayout();
@@ -160,6 +162,30 @@
             this.btnNewGame.UseVisualStyleBackColor = false;
             this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Astron Boy Video", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(13, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 29);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "SCORE:";
+            // 
+            // lblScore
+            // 
+            this.lblScore.AutoSize = true;
+            this.lblScore.BackColor = System.Drawing.Color.Transparent;
+            this.lblScore.Font = new System.Drawing.Font("Astron Boy Video", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore.ForeColor = System.Drawing.Color.White;
+            this.lblScore.Location = new System.Drawing.Point(106, 13);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(98, 29);
+            this.lblScore.TabIndex = 5;
+            this.lblScore.Text = "00000";
+            // 
             // BrickBreakerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,6 +193,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(784, 600);
+            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.GameMenu);
             this.Controls.Add(this.lblGameOver);
             this.Controls.Add(this.imgBall);
@@ -202,6 +230,8 @@
         private System.Windows.Forms.Button btnQuit;
         private System.Windows.Forms.Button btnResume;
         private System.Windows.Forms.Button btnNewGame;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblScore;
     }
 }
 

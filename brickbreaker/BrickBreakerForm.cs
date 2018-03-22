@@ -31,6 +31,7 @@ namespace brickbreaker
 
         // Game variables
         bool gamePaused = true;
+        int score = 0;
 
         public BrickBreakerForm()
         {
@@ -67,6 +68,7 @@ namespace brickbreaker
                 {
                     int index = rand.Next(0, imageList1.Images.Count);
                     Blocks[i, j] = imageList1.Images[index];
+                    Blocks[i, j].Tag = index;
                 }
             return rows * cols;
         }
@@ -154,6 +156,12 @@ namespace brickbreaker
                 {
                     if (Blocks[row, col] != null)
                     {
+                        if ((int)Blocks[row, col].Tag == 0)
+                        {
+                            // Increase speed after hitting a stone block
+                            ballSpeed += 3;
+                        }
+
                         Blocks[row, col] = null;
                         Rectangle rc = new Rectangle(xpos + col * imgWidth, ypos + row * imgHeight, imgWidth, imgHeight);
                         Invalidate(rc);
@@ -165,6 +173,15 @@ namespace brickbreaker
             {
                 //We have at least 1 block hit
                 ballDY = -ballDY;
+
+                score += hitCount;
+                lblScore.Text = score.ToString("D5");
+                blockCount -= hitCount;
+                if(blockCount <= 0)
+                {
+                    // Game level is complete
+
+                }
             }
         }
 
@@ -226,7 +243,9 @@ namespace brickbreaker
 
         private void btnNewGame_Click(object sender, EventArgs e)
         {
-            // Make new blocks
+            score = 0;
+            lblScore.Text = score.ToString("D5");
+
             // Center paddle on screen
             MovePaddle((ClientRectangle.Width - imgPaddle.Width) / 2);
 
