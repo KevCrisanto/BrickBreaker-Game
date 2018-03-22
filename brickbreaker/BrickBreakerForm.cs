@@ -76,8 +76,9 @@ namespace brickbreaker
 
         private void GameTimer_Tick(object sender, EventArgs e)
         {
-            // Ball movement
+            //Ball movement
             Point pt = imgBall.Location;
+
             pt.X += ballSpeed * ballDX;
             pt.Y += ballSpeed * ballDY;
             imgBall.Location = pt;
@@ -98,6 +99,45 @@ namespace brickbreaker
             // Detect collision with paddle
             if (imgBall.Bounds.IntersectsWith(imgPaddle.Bounds))
                 ballDY = -ballDY;
+
+            //Detect collision with blocks
+            Point[] pts = new Point[]
+            {
+                new Point(pt.X, pt.Y),  //left-top
+                new Point(pt.X + imgBall.Width, pt.Y), //right-top
+                new Point(pt.X, pt.Y+imgBall.Height), //left-bottom
+                new Point(pt.X+imgBall.Width, pt.Y+imgBall.Height) //Right-bottom
+            };
+
+            int hitCount = 0;
+            foreach (Point ptBall in pts)
+            {
+                int imgWidth = imageList1.ImageSize.Width;
+                int imgHeight = imageList1.ImageSize.Height;
+                int xpos = (ClientRectangle.Width - imgWidth * blockCols) / 2;
+                int ypos = 70;
+                int row = ptBall.Y - ypos;
+                int col = ptBall.X - xpos;
+
+                col /= imgWidth;
+                row /= imgHeight;
+
+                if (col >= 0 && col < blockCols && row >= 0 && row < blockRows)
+                {
+                    if (Blocks[row, col] != null)
+                    {
+                        Blocks[row, col] = null;
+                        Rectangle rc = new Rectangle(xpos + col * imgWidth, ypos + row * imgHeight, imgWidth, imgHeight);
+                        Invalidate(rc);
+                        ++hitCount;
+                    }
+                }
+            }
+            if (hitCount > 0)
+            {
+                //We have at least 1 block hit
+                ballDY = -ballDY;
+            }
         }
 
         private void BrickBreakerForm_MouseMove(object sender, MouseEventArgs e)
@@ -109,16 +149,18 @@ namespace brickbreaker
         {
             Graphics g = e.Graphics;
 
+            int xpos;
             int ypos = 70;
             int imgWidth = imageList1.ImageSize.Width;
             int imgHeight = imageList1.ImageSize.Height;
 
             for (int i = 0; i < blockRows; ++i)
             {
-                int xpos = (ClientRectangle.Width - imgWidth * blockCols)/2; // Center blocks on screen
+                xpos = (ClientRectangle.Width - imgWidth * blockCols)/2; // Center blocks on screen
                 for (int j = 0; j < blockCols; ++j)
                 {
-                    g.DrawImage(Blocks[i, j], xpos, ypos);
+                    if (Blocks[i, j] != null)
+                        g.DrawImage(Blocks[i, j], xpos, ypos);
                     xpos += imgWidth;
                 }
                 ypos += imgHeight;

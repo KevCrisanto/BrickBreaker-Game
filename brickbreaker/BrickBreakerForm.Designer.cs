@@ -67,7 +67,7 @@
             this.lblGameOver.BackColor = System.Drawing.Color.Transparent;
             this.lblGameOver.Font = new System.Drawing.Font("Bauhaus 93", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGameOver.ForeColor = System.Drawing.Color.Red;
-            this.lblGameOver.Location = new System.Drawing.Point(220, 71);
+            this.lblGameOver.Location = new System.Drawing.Point(228, 165);
             this.lblGameOver.Name = "lblGameOver";
             this.lblGameOver.Size = new System.Drawing.Size(348, 73);
             this.lblGameOver.TabIndex = 2;
