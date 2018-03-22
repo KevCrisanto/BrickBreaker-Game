@@ -52,10 +52,14 @@ namespace brickbreaker
             ShowMenu(Pause);
             gameTimer.Enabled = !Pause;
             gamePaused = Pause;
+            btnResume.Enabled = Pause;
         }
 
         private int MakeBlocks(int rows, int cols)
         {
+            blockRows = rows;
+            blockCols = cols;
+
             Blocks = new Image[rows, cols];
 
             for (int i = 0; i < rows; ++i)
@@ -89,12 +93,13 @@ namespace brickbreaker
             // Setup game timer
             gameTimer.Interval = 16; // Call timer every 16ms
             gameTimer.Tick += GameTimer_Tick;
-            gameTimer.Enabled = true;
 
             // Prepare our blocks
-            blockRows = 5;
-            blockCols = imageList1.Images.Count;
-            blockCount = MakeBlocks(blockRows, blockCols);
+            blockCount = MakeBlocks(5, imageList1.Images.Count);
+
+            // Game is paused when it starts
+            PauseGame(true);
+            btnResume.Enabled = false;
         }
 
         private void GameTimer_Tick(object sender, EventArgs e)
@@ -165,6 +170,8 @@ namespace brickbreaker
 
         private void BrickBreakerForm_MouseMove(object sender, MouseEventArgs e)
         {
+            if (IsPaused())
+                return;
             MovePaddle(e.X);
         }
 
@@ -198,19 +205,50 @@ namespace brickbreaker
             switch(e.KeyCode)
             {
                 case Keys.Escape:
-                    PauseGame(!IsPaused());
+                    ShowMenu(!GameMenu.Visible);
+                    if(!IsPaused())
+                        PauseGame();
                     break;
                 case Keys.Q:
                     // Quit
                     Close();
                     break;
                 case Keys.Left:
-                    MovePaddle(imgPaddle.Left - paddleSpeed);
+                    if(!IsPaused())
+                        MovePaddle(imgPaddle.Left - paddleSpeed);
                     break;
                 case Keys.Right:
-                    MovePaddle(imgPaddle.Left + paddleSpeed);
+                    if (!IsPaused())
+                        MovePaddle(imgPaddle.Left + paddleSpeed);
                     break;
             }
+        }
+
+        private void btnNewGame_Click(object sender, EventArgs e)
+        {
+            // Make new blocks
+            // Center paddle on screen
+            MovePaddle((ClientRectangle.Width - imgPaddle.Width) / 2);
+
+            // Center ball on screen
+            imgBall.Left = (ClientRectangle.Width - imgPaddle.Width) / 2;
+            imgBall.Top = 250;
+
+            // Prepare our blocks
+            blockCount = MakeBlocks(rand.Next(3, 8), imageList1.Images.Count);
+
+            // Unpause after pressing "New Game" button
+            PauseGame(false);
+        }
+
+        private void btnResume_Click(object sender, EventArgs e)
+        {
+            PauseGame(false);
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

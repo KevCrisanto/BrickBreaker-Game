@@ -131,6 +131,7 @@
             this.btnQuit.TabIndex = 2;
             this.btnQuit.Text = "QUIT";
             this.btnQuit.UseVisualStyleBackColor = false;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
             // btnResume
             // 
@@ -144,6 +145,7 @@
             this.btnResume.TabIndex = 1;
             this.btnResume.Text = "RESUME";
             this.btnResume.UseVisualStyleBackColor = false;
+            this.btnResume.Click += new System.EventHandler(this.btnResume_Click);
             // 
             // btnNewGame
             // 
@@ -156,6 +158,7 @@
             this.btnNewGame.TabIndex = 0;
             this.btnNewGame.Text = "NEW GAME";
             this.btnNewGame.UseVisualStyleBackColor = false;
+            this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
             // 
             // BrickBreakerForm
             // 
