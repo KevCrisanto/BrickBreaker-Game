@@ -41,6 +41,7 @@
             this.btnNewGame = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
+            this.lblCountdown = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgPaddle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBall)).BeginInit();
             this.GameMenu.SuspendLayout();
@@ -75,7 +76,7 @@
             this.lblGameOver.BackColor = System.Drawing.Color.Transparent;
             this.lblGameOver.Font = new System.Drawing.Font("Astron Boy Rg", 71.99999F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGameOver.ForeColor = System.Drawing.Color.Red;
-            this.lblGameOver.Location = new System.Drawing.Point(171, 32);
+            this.lblGameOver.Location = new System.Drawing.Point(166, 35);
             this.lblGameOver.Name = "lblGameOver";
             this.lblGameOver.Size = new System.Drawing.Size(464, 115);
             this.lblGameOver.TabIndex = 2;
@@ -186,6 +187,19 @@
             this.lblScore.TabIndex = 5;
             this.lblScore.Text = "00000";
             // 
+            // lblCountdown
+            // 
+            this.lblCountdown.AutoSize = true;
+            this.lblCountdown.BackColor = System.Drawing.Color.Transparent;
+            this.lblCountdown.Font = new System.Drawing.Font("Astron Boy Rg", 71.99999F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountdown.ForeColor = System.Drawing.Color.Yellow;
+            this.lblCountdown.Location = new System.Drawing.Point(627, 223);
+            this.lblCountdown.Name = "lblCountdown";
+            this.lblCountdown.Size = new System.Drawing.Size(113, 115);
+            this.lblCountdown.TabIndex = 6;
+            this.lblCountdown.Text = "3";
+            this.lblCountdown.Visible = false;
+            // 
             // BrickBreakerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,6 +207,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(784, 600);
+            this.Controls.Add(this.lblCountdown);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.GameMenu);
@@ -232,6 +247,7 @@
         private System.Windows.Forms.Button btnNewGame;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblScore;
+        private System.Windows.Forms.Label lblCountdown;
     }
 }
 

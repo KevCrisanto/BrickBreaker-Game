@@ -256,6 +256,17 @@ namespace brickbreaker
             // Prepare our blocks
             blockCount = MakeBlocks(rand.Next(3, 8), imageList1.Images.Count);
 
+            // Countdown
+            lblCountdown.Text = "3";
+            lblCountdown.Visible = true;
+            ShowMenu(false);
+            for (int i = 3; i >= 0; --i)
+            {
+                lblCountdown.Text = i.ToString();
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(1000);
+            }
+            lblCountdown.Visible = false;
             // Unpause after pressing "New Game" button
             PauseGame(false);
         }
