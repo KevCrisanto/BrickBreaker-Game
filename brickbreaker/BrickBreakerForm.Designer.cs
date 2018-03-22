@@ -34,8 +34,14 @@
             this.imgBall = new System.Windows.Forms.PictureBox();
             this.lblGameOver = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.GameMenu = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnQuit = new System.Windows.Forms.Button();
+            this.btnResume = new System.Windows.Forms.Button();
+            this.btnNewGame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgPaddle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBall)).BeginInit();
+            this.GameMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgPaddle
@@ -54,7 +60,7 @@
             this.imgBall.BackColor = System.Drawing.Color.Transparent;
             this.imgBall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.imgBall.Image = ((System.Drawing.Image)(resources.GetObject("imgBall.Image")));
-            this.imgBall.Location = new System.Drawing.Point(514, 263);
+            this.imgBall.Location = new System.Drawing.Point(378, 456);
             this.imgBall.Name = "imgBall";
             this.imgBall.Size = new System.Drawing.Size(32, 32);
             this.imgBall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -65,11 +71,11 @@
             // 
             this.lblGameOver.AutoSize = true;
             this.lblGameOver.BackColor = System.Drawing.Color.Transparent;
-            this.lblGameOver.Font = new System.Drawing.Font("Bauhaus 93", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGameOver.Font = new System.Drawing.Font("Astron Boy Rg", 71.99999F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGameOver.ForeColor = System.Drawing.Color.Red;
-            this.lblGameOver.Location = new System.Drawing.Point(228, 165);
+            this.lblGameOver.Location = new System.Drawing.Point(171, 32);
             this.lblGameOver.Name = "lblGameOver";
-            this.lblGameOver.Size = new System.Drawing.Size(348, 73);
+            this.lblGameOver.Size = new System.Drawing.Size(464, 115);
             this.lblGameOver.TabIndex = 2;
             this.lblGameOver.Text = "Game Over";
             this.lblGameOver.Visible = false;
@@ -88,6 +94,69 @@
             this.imageList1.Images.SetKeyName(7, "violet_block.png");
             this.imageList1.Images.SetKeyName(8, "yellow_block.png");
             // 
+            // GameMenu
+            // 
+            this.GameMenu.BackColor = System.Drawing.Color.Transparent;
+            this.GameMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GameMenu.BackgroundImage")));
+            this.GameMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GameMenu.Controls.Add(this.label1);
+            this.GameMenu.Controls.Add(this.btnQuit);
+            this.GameMenu.Controls.Add(this.btnResume);
+            this.GameMenu.Controls.Add(this.btnNewGame);
+            this.GameMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.GameMenu.Location = new System.Drawing.Point(200, 150);
+            this.GameMenu.Name = "GameMenu";
+            this.GameMenu.Size = new System.Drawing.Size(400, 300);
+            this.GameMenu.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Astron Boy Video", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(52, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(293, 33);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "BRICKBREAKER MENU";
+            // 
+            // btnQuit
+            // 
+            this.btnQuit.BackColor = System.Drawing.Color.Teal;
+            this.btnQuit.Font = new System.Drawing.Font("Astron Boy Rg", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnQuit.Location = new System.Drawing.Point(45, 190);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(300, 35);
+            this.btnQuit.TabIndex = 2;
+            this.btnQuit.Text = "QUIT";
+            this.btnQuit.UseVisualStyleBackColor = false;
+            // 
+            // btnResume
+            // 
+            this.btnResume.BackColor = System.Drawing.Color.Teal;
+            this.btnResume.Enabled = false;
+            this.btnResume.Font = new System.Drawing.Font("Astron Boy Rg", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResume.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnResume.Location = new System.Drawing.Point(45, 131);
+            this.btnResume.Name = "btnResume";
+            this.btnResume.Size = new System.Drawing.Size(300, 35);
+            this.btnResume.TabIndex = 1;
+            this.btnResume.Text = "RESUME";
+            this.btnResume.UseVisualStyleBackColor = false;
+            // 
+            // btnNewGame
+            // 
+            this.btnNewGame.BackColor = System.Drawing.Color.Teal;
+            this.btnNewGame.Font = new System.Drawing.Font("Astron Boy Rg", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewGame.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnNewGame.Location = new System.Drawing.Point(45, 73);
+            this.btnNewGame.Name = "btnNewGame";
+            this.btnNewGame.Size = new System.Drawing.Size(300, 35);
+            this.btnNewGame.TabIndex = 0;
+            this.btnNewGame.Text = "NEW GAME";
+            this.btnNewGame.UseVisualStyleBackColor = false;
+            // 
             // BrickBreakerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -95,20 +164,25 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(784, 600);
+            this.Controls.Add(this.GameMenu);
             this.Controls.Add(this.lblGameOver);
             this.Controls.Add(this.imgBall);
             this.Controls.Add(this.imgPaddle);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "BrickBreakerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BrickBreaker";
             this.Load += new System.EventHandler(this.BrickBreakerForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.BrickBreakerForm_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BrickBreakerForm_KeyDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BrickBreakerForm_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.imgPaddle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBall)).EndInit();
+            this.GameMenu.ResumeLayout(false);
+            this.GameMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,6 +194,11 @@
         private System.Windows.Forms.PictureBox imgBall;
         private System.Windows.Forms.Label lblGameOver;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Panel GameMenu;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.Button btnResume;
+        private System.Windows.Forms.Button btnNewGame;
     }
 }
 

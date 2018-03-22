@@ -15,6 +15,9 @@ namespace brickbreaker
         Timer gameTimer = new Timer();
         Random rand = new Random();
 
+        // Paddle speed
+        int paddleSpeed = 30;
+
         // Ball variables
         int ballSpeed = 8;
         int ballDX = 1;
@@ -26,9 +29,29 @@ namespace brickbreaker
         int blockCols;
         int blockCount = 0;
 
+        // Game variables
+        bool gamePaused = true;
+
         public BrickBreakerForm()
         {
             InitializeComponent();
+        }
+
+        private void ShowMenu(bool Show = true)
+        {
+            GameMenu.Visible = Show;
+            Invalidate(); 
+        }
+
+        private bool IsPaused()
+        {
+            return gamePaused;
+        }
+        private void PauseGame(bool Pause = true)
+        {
+            ShowMenu(Pause);
+            gameTimer.Enabled = !Pause;
+            gamePaused = Pause;
         }
 
         private int MakeBlocks(int rows, int cols)
@@ -149,6 +172,9 @@ namespace brickbreaker
         {
             Graphics g = e.Graphics;
 
+            if (GameMenu.Visible)
+                return;
+
             int xpos;
             int ypos = 70;
             int imgWidth = imageList1.ImageSize.Width;
@@ -164,6 +190,26 @@ namespace brickbreaker
                     xpos += imgWidth;
                 }
                 ypos += imgHeight;
+            }
+        }
+
+        private void BrickBreakerForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch(e.KeyCode)
+            {
+                case Keys.Escape:
+                    PauseGame(!IsPaused());
+                    break;
+                case Keys.Q:
+                    // Quit
+                    Close();
+                    break;
+                case Keys.Left:
+                    MovePaddle(imgPaddle.Left - paddleSpeed);
+                    break;
+                case Keys.Right:
+                    MovePaddle(imgPaddle.Left + paddleSpeed);
+                    break;
             }
         }
     }
