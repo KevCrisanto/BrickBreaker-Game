@@ -23,4 +23,4 @@ Here's some gameplay:
 
 ### How can I play it?
 
-If you want to try the game, you can download the .exe file [here](releases/tag/v0.1-beta).
+If you want to try the game, you can download the .exe file [here](https://github.com/KevCrisanto/BrickBreaker-Game/releases/tag/v0.1-beta).
