@@ -42,6 +42,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.lblCountdown = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.imgPaddle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBall)).BeginInit();
             this.GameMenu.SuspendLayout();
@@ -102,6 +104,8 @@
             this.GameMenu.BackColor = System.Drawing.Color.Transparent;
             this.GameMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GameMenu.BackgroundImage")));
             this.GameMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GameMenu.Controls.Add(this.radioButton2);
+            this.GameMenu.Controls.Add(this.radioButton1);
             this.GameMenu.Controls.Add(this.label1);
             this.GameMenu.Controls.Add(this.btnQuit);
             this.GameMenu.Controls.Add(this.btnResume);
@@ -200,6 +204,28 @@
             this.lblCountdown.Text = "3";
             this.lblCountdown.Visible = false;
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(277, 50);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(85, 17);
+            this.radioButton1.TabIndex = 4;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "radioButton1";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(178, 50);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(85, 17);
+            this.radioButton2.TabIndex = 5;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "radioButton2";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
             // BrickBreakerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,6 +274,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label lblCountdown;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
 

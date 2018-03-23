@@ -1,22 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace brickbreaker
 {
     public partial class BrickBreakerForm : Form
     {
+        // Sounds for the game
+        SoundPlayer startSound = new SoundPlayer(brickbreaker.Properties.Resources.start);
+        SoundPlayer quitSound = new SoundPlayer(brickbreaker.Properties.Resources.quit);
+        SoundPlayer countDownSound = new SoundPlayer(brickbreaker.Properties.Resources.countdown);
+        SoundPlayer blockHitSound = new SoundPlayer(brickbreaker.Properties.Resources.Hit1);
+        SoundPlayer wallHitSound = new SoundPlayer(brickbreaker.Properties.Resources.Hit2);
+        SoundPlayer blockSpeedSound = new SoundPlayer(brickbreaker.Properties.Resources.speed);
+        SoundPlayer paddleTouchSound = new SoundPlayer(brickbreaker.Properties.Resources.paddle_touch);
+
         Timer gameTimer = new Timer();
         Random rand = new Random();
 
         // Paddle speed
-        int paddleSpeed = 30;
+        int paddleSpeed = 50;
+        bool useKeyboard = false;
+        int keyboardDX = 0;
 
         // Ball variables
         int ballSpeed = 8;
@@ -64,6 +70,8 @@ namespace brickbreaker
             lblGameOver.Top = 60;
             lblGameOver.Visible = true;
             gameTimer.Enabled = false;
+
+            quitSound.Play();
 
             for (int i = 0; i < 10; ++i)
             {
@@ -124,6 +132,8 @@ namespace brickbreaker
             // Game is paused when it starts
             PauseGame(true);
             btnResume.Enabled = false;
+
+            startSound.Play();
         }
 
         private void GameTimer_Tick(object sender, EventArgs e)
@@ -136,10 +146,16 @@ namespace brickbreaker
             imgBall.Location = pt;
 
             if (pt.X < 0 || pt.X > ClientRectangle.Width - imgBall.Width)
+            {
+                wallHitSound.Play();
                 ballDX = -ballDX;
+            }
 
             if (pt.Y < 0)
+            {
+                wallHitSound.Play();
                 ballDY = -ballDY;
+            }
 
             if (pt.Y > ClientRectangle.Height)
             {
@@ -149,7 +165,10 @@ namespace brickbreaker
 
             // Detect collision with paddle
             if (imgBall.Bounds.IntersectsWith(imgPaddle.Bounds))
+            {
+                paddleTouchSound.Play();
                 ballDY = -ballDY;
+            }
 
             //Detect collision with blocks
             Point[] pts = new Point[]
@@ -181,6 +200,12 @@ namespace brickbreaker
                         {
                             // Increase speed after hitting a stone block
                             ballSpeed += 3;
+                            if (hitCount == 0)
+                                blockSpeedSound.Play();
+                        }
+                        else if (hitCount == 0)
+                        {
+                            blockHitSound.Play();
                         }
 
                         Blocks[row, col] = null;
@@ -285,6 +310,7 @@ namespace brickbreaker
             {
                 lblCountdown.Text = i.ToString();
                 Application.DoEvents();
+                countDownSound.Play();
                 System.Threading.Thread.Sleep(1000);
             }
             lblCountdown.Visible = false;

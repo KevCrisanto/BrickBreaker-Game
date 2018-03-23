@@ -64,6 +64,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -77,6 +78,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\countdown.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hit1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hit2.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\out.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paddle_touch.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speed.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
