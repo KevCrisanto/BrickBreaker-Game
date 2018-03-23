@@ -20,3 +20,7 @@ When using the keyboard, use the left and right arrows to move the paddle.
 
 Here's some gameplay:
 ![gameplay](screenshots/gifs/gameplay.gif)
+
+### How can I play it?
+
+If you want to try the game, you can download the .exe file [here](releases/tag/v0.1-beta).
