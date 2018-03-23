@@ -46,6 +46,7 @@ namespace brickbreaker
 
         private void ShowMenu(bool Show = true)
         {
+            btnKeyboard.Checked = useKeyboard;
             GameMenu.Visible = Show;
             Invalidate(); 
         }
@@ -120,7 +121,7 @@ namespace brickbreaker
 
             // Center ball on screen
             imgBall.Left = (ClientRectangle.Width - imgPaddle.Width) / 2;
-            imgBall.Top = 250;
+            imgBall.Top = 220;
 
             // Setup game timer
             gameTimer.Interval = 16; // Call timer every 16ms
@@ -138,6 +139,10 @@ namespace brickbreaker
 
         private void GameTimer_Tick(object sender, EventArgs e)
         {
+            // Use keyboard if selected
+            if (useKeyboard)
+                MovePaddle(imgPaddle.Left + keyboardDX);
+
             //Ball movement
             Point pt = imgBall.Location;
 
@@ -199,7 +204,7 @@ namespace brickbreaker
                         if ((int)Blocks[row, col].Tag == 0)
                         {
                             // Increase speed after hitting a stone block
-                            ballSpeed += 3;
+                            ballSpeed += 2;
                             if (hitCount == 0)
                                 blockSpeedSound.Play();
                         }
@@ -233,7 +238,7 @@ namespace brickbreaker
 
         private void BrickBreakerForm_MouseMove(object sender, MouseEventArgs e)
         {
-            if (IsPaused())
+            if (IsPaused() || useKeyboard)
                 return;
             MovePaddle(e.X);
         }
@@ -278,17 +283,24 @@ namespace brickbreaker
                     break;
                 case Keys.Left:
                     if(!IsPaused())
-                        MovePaddle(imgPaddle.Left - paddleSpeed);
+                        keyboardDX = -paddleSpeed;
                     break;
                 case Keys.Right:
                     if (!IsPaused())
-                        MovePaddle(imgPaddle.Left + paddleSpeed);
+                        keyboardDX = paddleSpeed;
                     break;
             }
         }
 
         private void btnNewGame_Click(object sender, EventArgs e)
         {
+            // Reset direction of ball
+            ballDX = 1;
+            ballDY = 1;
+
+            // Reset Speed
+            ballSpeed = 8;
+
             score = 0;
             lblScore.Text = score.ToString("D5");
 
@@ -297,7 +309,7 @@ namespace brickbreaker
 
             // Center ball on screen
             imgBall.Left = (ClientRectangle.Width - imgPaddle.Width) / 2;
-            imgBall.Top = 250;
+            imgBall.Top = 220;
 
             // Prepare our blocks
             blockCount = MakeBlocks(rand.Next(3, 8), imageList1.Images.Count);
@@ -326,6 +338,16 @@ namespace brickbreaker
         private void btnQuit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnKeyboard_CheckedChanged(object sender, EventArgs e)
+        {
+            useKeyboard = btnKeyboard.Checked;
+        }
+
+        private void BrickBreakerForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            keyboardDX = 0;
         }
     }
 }

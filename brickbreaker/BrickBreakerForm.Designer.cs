@@ -42,8 +42,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.lblCountdown = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.btnKeyboard = new System.Windows.Forms.RadioButton();
+            this.btnMouse = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.imgPaddle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBall)).BeginInit();
             this.GameMenu.SuspendLayout();
@@ -104,8 +104,8 @@
             this.GameMenu.BackColor = System.Drawing.Color.Transparent;
             this.GameMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GameMenu.BackgroundImage")));
             this.GameMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GameMenu.Controls.Add(this.radioButton2);
-            this.GameMenu.Controls.Add(this.radioButton1);
+            this.GameMenu.Controls.Add(this.btnMouse);
+            this.GameMenu.Controls.Add(this.btnKeyboard);
             this.GameMenu.Controls.Add(this.label1);
             this.GameMenu.Controls.Add(this.btnQuit);
             this.GameMenu.Controls.Add(this.btnResume);
@@ -204,27 +204,30 @@
             this.lblCountdown.Text = "3";
             this.lblCountdown.Visible = false;
             // 
-            // radioButton1
+            // btnKeyboard
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(277, 50);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 4;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.btnKeyboard.AutoSize = true;
+            this.btnKeyboard.Font = new System.Drawing.Font("Astron Boy Rg", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKeyboard.Location = new System.Drawing.Point(297, 231);
+            this.btnKeyboard.Name = "btnKeyboard";
+            this.btnKeyboard.Size = new System.Drawing.Size(83, 23);
+            this.btnKeyboard.TabIndex = 4;
+            this.btnKeyboard.Text = "Keyboard";
+            this.btnKeyboard.UseVisualStyleBackColor = true;
+            this.btnKeyboard.CheckedChanged += new System.EventHandler(this.btnKeyboard_CheckedChanged);
             // 
-            // radioButton2
+            // btnMouse
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(178, 50);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
-            this.radioButton2.TabIndex = 5;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.btnMouse.AutoSize = true;
+            this.btnMouse.Checked = true;
+            this.btnMouse.Font = new System.Drawing.Font("Astron Boy Rg", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMouse.Location = new System.Drawing.Point(224, 231);
+            this.btnMouse.Name = "btnMouse";
+            this.btnMouse.Size = new System.Drawing.Size(67, 23);
+            this.btnMouse.TabIndex = 5;
+            this.btnMouse.TabStop = true;
+            this.btnMouse.Text = "Mouse";
+            this.btnMouse.UseVisualStyleBackColor = true;
             // 
             // BrickBreakerForm
             // 
@@ -250,6 +253,7 @@
             this.Load += new System.EventHandler(this.BrickBreakerForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.BrickBreakerForm_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BrickBreakerForm_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BrickBreakerForm_KeyUp);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BrickBreakerForm_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.imgPaddle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBall)).EndInit();
@@ -274,8 +278,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label lblCountdown;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton btnMouse;
+        private System.Windows.Forms.RadioButton btnKeyboard;
     }
 }
 
